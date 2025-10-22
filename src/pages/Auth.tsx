@@ -81,7 +81,7 @@ const Auth = () => {
     try {
       const validated = signInSchema.parse(signInData);
 
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: validated.email,
         password: validated.password,
       });
@@ -92,9 +92,33 @@ const Auth = () => {
         } else {
           toast.error(error.message);
         }
-      } else {
-        toast.success("Bienvenido!");
-        navigate("/");
+        return;
+      }
+
+      if (data.user) {
+        // Check user role and redirect accordingly
+        const { data: roles } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", data.user.id);
+
+        if (roles && roles.length > 0) {
+          const userRoles = roles.map(r => r.role);
+          
+          if (userRoles.includes("admin")) {
+            toast.success("Bienvenido Administrador!");
+            navigate("/admin");
+          } else if (userRoles.includes("operator")) {
+            toast.success("Bienvenido Operador!");
+            navigate("/operador");
+          } else {
+            toast.success("Bienvenido!");
+            navigate("/");
+          }
+        } else {
+          toast.success("Bienvenido!");
+          navigate("/");
+        }
       }
     } catch (error) {
       if (error instanceof z.ZodError) {

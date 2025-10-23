@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Building2, Users, BarChart3 } from "lucide-react";
 import { toast } from "sonner";
+import RoomsManager from "@/components/admin/RoomsManager";
+import OperatorsManager from "@/components/admin/OperatorsManager";
+import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 
 export default function Admin() {
   const [loading, setLoading] = useState(true);
@@ -79,39 +81,15 @@ export default function Admin() {
           </TabsList>
 
           <TabsContent value="rooms" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>CRUD de Habitaciones</CardTitle>
-                <CardDescription>Crear, leer, actualizar y eliminar habitaciones</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <RoomsManager />
           </TabsContent>
 
           <TabsContent value="operators" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>CRUD de Operadores</CardTitle>
-                <CardDescription>Gestiona los operadores del hotel</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <OperatorsManager />
           </TabsContent>
 
           <TabsContent value="analytics" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Consultas y Estadísticas</CardTitle>
-                <CardDescription>Visualiza gráficos y métricas del hotel</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <AnalyticsDashboard />
           </TabsContent>
         </Tabs>
       </main>

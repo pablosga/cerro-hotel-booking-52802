@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Building2, Calendar, Mail, CreditCard } from "lucide-react";
 import { toast } from "sonner";
 import ReservationsManager from "@/components/operator/ReservationsManager";
+import RoomsStatus from "@/components/operator/RoomsStatus";
+import ContactMessagesManager from "@/components/operator/ContactMessagesManager";
+import PaymentsManager from "@/components/operator/PaymentsManager";
 
 export default function Operator() {
   const [loading, setLoading] = useState(true);
@@ -84,15 +86,7 @@ export default function Operator() {
           </TabsList>
 
           <TabsContent value="rooms" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Gestión de Habitaciones</CardTitle>
-                <CardDescription>Consulta y administra el estado de las habitaciones</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <RoomsStatus />
           </TabsContent>
 
           <TabsContent value="reservations" className="mt-6">
@@ -100,27 +94,11 @@ export default function Operator() {
           </TabsContent>
 
           <TabsContent value="messages" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Mensajes de Contacto</CardTitle>
-                <CardDescription>Responde a las consultas de los clientes</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <ContactMessagesManager />
           </TabsContent>
 
           <TabsContent value="payments" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Procesamiento de Pagos</CardTitle>
-                <CardDescription>Gestiona los pagos de las reservas</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <PaymentsManager />
           </TabsContent>
         </Tabs>
       </main>

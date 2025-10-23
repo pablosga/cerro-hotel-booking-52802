@@ -6,10 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Rooms from "./pages/Rooms";
+import BookRoom from "./pages/BookRoom";
+import MyReservations from "./pages/MyReservations";
 import Contact from "./pages/Contact";
 import Operator from "./pages/Operator";
 import Admin from "./pages/Admin";
-
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/habitaciones" element={<Rooms />} />
+          <Route path="/reservar/:roomId" element={<BookRoom />} />
+          <Route path="/mis-reservas" element={<MyReservations />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/operador" element={<Operator />} />
           <Route path="/admin" element={<Admin />} />

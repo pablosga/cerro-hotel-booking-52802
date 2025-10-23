@@ -72,6 +72,9 @@ const Navbar = () => {
 
             {session ? (
               <>
+                <Link to="/mis-reservas" className="text-sm font-medium hover:text-primary transition-colors">
+                  Mis Reservas
+                </Link>
                 {userRole === 'operator' && (
                   <Link to="/operador" className="text-sm font-medium hover:text-primary transition-colors">
                     Panel Operador

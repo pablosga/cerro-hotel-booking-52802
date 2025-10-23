@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Building2, Calendar, Mail, CreditCard } from "lucide-react";
 import { toast } from "sonner";
+import ReservationsManager from "@/components/operator/ReservationsManager";
 
 export default function Operator() {
   const [loading, setLoading] = useState(true);
@@ -95,15 +96,7 @@ export default function Operator() {
           </TabsContent>
 
           <TabsContent value="reservations" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Gestión de Reservas</CardTitle>
-                <CardDescription>Visualiza y gestiona las reservas de los huéspedes</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Contenido en desarrollo...</p>
-              </CardContent>
-            </Card>
+            <ReservationsManager />
           </TabsContent>
 
           <TabsContent value="messages" className="mt-6">

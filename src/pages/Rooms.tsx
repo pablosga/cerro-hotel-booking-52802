@@ -63,8 +63,7 @@ const Rooms = () => {
       navigate("/auth");
       return;
     }
-    // Navigate to reservation page (to be created)
-    toast.info("Función de reserva en desarrollo");
+    navigate(`/reservar/${roomId}`);
   };
 
   if (loading) {
